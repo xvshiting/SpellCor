@@ -75,16 +75,16 @@ checker.fix_pos(["here","are", "some", "Questino"], 3)
 
 #### Add language model
 
-* clone this repo
+*Clone this repo
 
 ```shell
 git clone https://github.com/xvshiting/SpellCor.git
 ```
 
-* add your own model
+* Add your own model
  
  ```shell 
- cd SpellCor/models
+ cd SpellCor/spellcor_models
 ```
   Under models dir, creat a py file and Add a new class based on `AbstractLanguageModel` like this:
 ```python
@@ -107,7 +107,7 @@ These four methods above must be implemented in your new class.
 ```python
 python setup.py install
 ```
-* check model list and use
+* Check model list and use
 
 ```python
 import spellcor
@@ -119,6 +119,41 @@ checker.show_show_lang_models()
 
 checker.load_lang_model("NewModel",model_path)
 ```
+
+#### Judge input token whether a real word with your Own dictionary
+Like JamSpell, SpellCor also give candidates word a different penalty according to original input token is a real word 
+or not. In JamSpell, it judge a input token is a word by searching it in the language model. However, the corpus using 
+training the language model is always dirty, so it may "trust" wrong words and give their candidates a larger penalty.
+By defining your own clean dictionary, this problem can be solved.
+```python
+# load a clean dictionary
+checker.load_valid_word_dict(dict_path)
+```
+By default, once you load the dictionary, SpellCor will use it automatically. If you want to "close" this dictionary, 
+call below function:
+```python
+checker.use_valid_word_dict = False
+```
+
+#### Judge candidate word with your Own dictionary
+
+It is exactly as same as input token part.
+
+```python
+# load a clean dictionary
+checker.load_valid_candidate_dict(dict_path)
+```
+
+ Close it!
+```python
+
+checker.use_valid_candidate_dict = False
+
+# open it 
+checker.use_valid_candidate_dict = True
+
+```
+
 ### License
 
 > MIT license
