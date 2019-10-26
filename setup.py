@@ -23,7 +23,7 @@ class CustomInstall(install):
         self.run_command('build_ext')
         install.run(self)
 
-VERSION = '0.0.13'
+VERSION = '0.0.14'
 
 setup(
     name='spellcor',
@@ -39,7 +39,7 @@ setup(
         'Programming Language :: Python :: 3',
         'License :: OSI Approved :: MIT License',
     ],
-    py_modules=['spellcor'],
+    py_modules=['spellcor','utils'],
     packages=['models'],
     zip_safe=False,
     cmdclass={
