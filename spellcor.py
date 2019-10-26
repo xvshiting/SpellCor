@@ -1,5 +1,5 @@
-from models import registered_language_models
-import utils
+from spellcor_models import registered_language_models
+import spellcor_utils
 
 
 class SpellChecker:
@@ -54,7 +54,7 @@ class SpellChecker:
         return models_name
 
     def fix_sentence(self, sentence):
-        tokens,lower_tokens = utils.token_string(sentence)
+        tokens,lower_tokens = spellcor_utils.token_string(sentence)
         fixed_tokens = []
         # print(lower_tokens)
         for i, t in enumerate(lower_tokens):
@@ -71,7 +71,7 @@ class SpellChecker:
             if st == tt:
                 capital_tokens.append(tt)
             else:
-                capital_tokens.append(utils.align_capital(st,tt))
+                capital_tokens.append(spellcor_utils.align_capital(st, tt))
         return capital_tokens
 
     def fix_pos(self, tokens, i):
@@ -112,10 +112,10 @@ class SpellChecker:
     def __generate_candidates(self, word):
         """language model dict and edit distance generate candidates"""
         further_candidates = False
-        candidates = utils.edit_distance_1(self.alphas,word, self.__valid_candidate,last_level=True)
+        candidates = spellcor_utils.edit_distance_1(self.alphas, word, self.__valid_candidate, last_level=True)
         candidates = [c for c in candidates if self.__valid_candidate(c)]
         if not candidates :
-            candidates = utils.edit_distance_2(self.alphas, word, self.__valid_candidate)
+            candidates = spellcor_utils.edit_distance_2(self.alphas, word, self.__valid_candidate)
             candidates = [c for c in candidates if self.__valid_candidate(c)]
             further_candidates = True
         if candidates:
@@ -148,7 +148,7 @@ class SpellChecker:
 if __name__ == "__main__":
     import sys
     action = sys.argv[1]
-    from models import nglm
+    from spellcor_models import nglm
     if action == "train":
         assert len(sys.argv) == 4
         data_path = sys.argv[2]

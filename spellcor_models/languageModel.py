@@ -1,8 +1,8 @@
 
 from abc import ABCMeta,abstractmethod
 from . import register_lang_model
-from models.nglm import NGramLanguageModel,load_language_model
-from models.nglm import train as nlgm_train
+from spellcor_models.nglm import NGramLanguageModel,load_language_model
+from spellcor_models.nglm import train as nlgm_train
 
 
 class AbstractLanguageModel:

@@ -4,7 +4,7 @@ my 3-gram language model
 import codecs
 import os
 import pickle
-import  utils
+import  spellcor_utils
 import re
 from collections import Counter
 import math
@@ -122,7 +122,7 @@ def train_with_text(sentences):
 
 
 def train(file_path, save_path = os.path.join("~", "tmp")):
-    utils.maybe_mkdir(save_path)
+    spellcor_utils.maybe_mkdir(save_path)
     language_model_file = os.path.join(save_path,model_name)
     with codecs.open(file_path, 'r', encoding="utf-8") as f:
         sentences = f.readlines()
