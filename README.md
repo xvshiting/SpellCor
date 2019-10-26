@@ -50,7 +50,7 @@ checker.show_show_lang_models()
 # load language model
 model_name = "BaseLanguageModel"
 model_path = "./tmp/nglm.bin"
-checker.load_lang_model("BaseLanguageModel","./tmp/nglm.bin")
+checker.load_lang_model(model_name,model_path)
 > Loading...
 > Load Success!
 
@@ -70,5 +70,56 @@ checker.fix_pos(["here","are", "some", "Questino"], 3)
 > ['Question', 'Questino']
 
 ```
+---
+### Extension 
 
+#### Add language model
+
+* clone this repo
+
+```shell
+git clone https://github.com/xvshiting/SpellCor.git
+```
+
+* add your own model
+ 
+ ```shell 
+ cd SpellCor/models
+```
+  Under models dir, creat a py file and Add a new class based on `AbstractLanguageModel` like this:
+```python
+@register_lang_model("NewModel")
+class BaseLanguageModel(AbstractLanguageModel):
+    def __init__(self, model_path,**kwargs):
+        super(BaseLanguageModel, self).__init__("NewModel")
+    def get_score(self, sentence, word_start_index, word_end_index):
+        # call your NN language model to compute score of sentence
+        pass
+    def is_word(self, word):
+        pass
+    def load_lang_model(self, model_path):
+        pass
+    def word_freq(self, word):
+        pass
+```
+These four methods above are must be implement in your new class.
+* Install with your model
+```python
+python setup.py install
+```
+* check model list and use
+
+```python
+import spellcor
+checker = spellcor.SpellChecker()
+
+checker.show_show_lang_models()
+
+> ["BaseLanguageModel","NewModel"] 
+
+checker.load_lang_model("NewModel",model_path)
+```
+### License
+
+> MIT license
 
