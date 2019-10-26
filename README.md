@@ -121,8 +121,8 @@ checker.load_lang_model("NewModel",model_path)
 ```
 
 #### Judge input token whether a real word with your Own dictionary
-Like JamSpell, SpellCor also give candidates word a different penalty according to original input token is a real word 
-or not. In JamSpell, it judge a input token is a word by searching it in the language model. However, the corpus using 
+Like JamSpell, SpellCor also gives words' candidates a different penalty according to original input is a real word 
+or not. In JamSpell, it judges a input token whether a word by searching it in the language model. However, the corpus used
 training the language model is always dirty, so it may "trust" wrong words and give their candidates a larger penalty.
 By defining your own clean dictionary, this problem can be solved.
 ```python
@@ -154,7 +154,13 @@ checker.use_valid_candidate_dict = True
 
 ```
 
+### TO-Do
+
+1. Add symmetrical deletion algorithm.
+2. Add NN language Model.
+
 ### License
 
-> MIT license
+> Under MIT license
 
+Any commitment is Welcome!
