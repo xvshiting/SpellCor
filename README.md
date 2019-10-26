@@ -35,7 +35,7 @@ pip install spellcor
 
 #### load language model
 
-You can download basic language model [here](https://pan.baidu.com/s/1r3DxT0AKmuUcu2JERObiaw).
+You can download basic language model [here](https://pan.baidu.com/s/1zfIdfTJvEn2x1CtFTmfD2Q)
 
 ```python
 import spellcor
