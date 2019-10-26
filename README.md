@@ -164,4 +164,4 @@ checker.use_valid_candidate_dict = True
 
 > Under MIT license
 
-Any commitment is Welcome!
+Any code commitment or review is Welcome!
