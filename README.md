@@ -102,7 +102,7 @@ class BaseLanguageModel(AbstractLanguageModel):
     def word_freq(self, word):
         pass
 ```
-These four methods above are must be implement in your new class.
+These four methods above must be implemented in your new class.
 * Install with your model
 ```python
 python setup.py install
