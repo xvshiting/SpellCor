@@ -39,8 +39,8 @@ setup(
         'Programming Language :: Python :: 3',
         'License :: OSI Approved :: MIT License',
     ],
-    py_modules=['spellcor','utils'],
-    packages=['models'],
+    py_modules=['spellcor','spellcor_utils'],
+    packages=['spellcor_models'],
     zip_safe=False,
     cmdclass={
         'build': CustomBuild,
