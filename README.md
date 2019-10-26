@@ -1,4 +1,4 @@
-#SpellCor
+# SpellCor
 
 SpellCor is a spell correction tools coded fully with PYTHON.
 
