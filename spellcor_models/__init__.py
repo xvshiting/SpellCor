@@ -17,4 +17,4 @@ def register_lang_model(name):
 for file in os.listdir(os.path.dirname(__file__)):
     if file.endswith('.py') and not file.startswith('_'):
         model_name = file[:file.find('.py')]
-        module = importlib.import_module('models.' + model_name)
+        module = importlib.import_module('spellcor_models.' + model_name)
