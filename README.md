@@ -1,18 +1,18 @@
 # SpellCor
 
-*SpellCor* is a spell correction tools coded fully with PYTHON.
+**SpellCor** is a spell correction tools coded fully with PYTHON.
 
 We implement this program inspired by [*JamSpell*](https://github.com/bakwc/JamSpell) which writen in C++ and could used with python by swig. 
-*Jamspell* is effective due to **C++** benefits. However, it's not convenient for developers or anyone who 
+**Jamspell** is effective due to **C++** benefits. However, it's not convenient for developers or anyone who 
 wants to add some features to it. Considering the prevalence of python in NLP area, We implement a python
-version spell correction program works like **Jamspell**, we call it *SpellCor*.
+version spell correction program works like **Jamspell**, we call it **SpellCor**.
 
-Compare with *Jamspell*, *SpellCor* is more flexible for Python developer:
+Compare with **Jamspell**, **SpellCor** is more flexible for Python developer:
 * Fully python code, include a python version *n-gram* language model .
 * You can easily use your own language model like NN models by writing some pieces of code.
 * Support to filter candidate words by the dictionary pointed by yourself.
 
-We also evaluate both SpellCor and Jamspell on 2W+ sentences contain spell errors, below is the detail.
+We also evaluate both **SpellCor** and **Jamspell** on *2W+ sentences* contain spell errors, below is the detail.
 SpellCor's performance is a little bad, but that maybe because we use a basic n-gram language model and the performance
 can be improved if you use NN language model.
  
@@ -75,13 +75,13 @@ checker.fix_pos(["here","are", "some", "Questino"], 3)
 
 #### Add language model
 
-* *Clone* this repo
+* **Clone** this repo
 
 ```shell
 git clone https://github.com/xvshiting/SpellCor.git
 ```
 
-* *Add* your own model
+* **Add** your own model
  
  ```shell 
  cd SpellCor/spellcor_models
@@ -102,7 +102,7 @@ class BaseLanguageModel(AbstractLanguageModel):
     def word_freq(self, word):
         pass
 ```
-These four methods above *must* be implemented in your new class.
+These four methods above **must** be implemented in your new class.
 
 * Install with your model
 ```python
@@ -122,9 +122,9 @@ checker.load_lang_model("NewModel",model_path)
 ```
 
 #### Judge input token whether a real word with your Own dictionary
-Like *JamSpell*, *SpellCor* also gives words' candidates a different penalty according to original input is a real word 
-or not. In *JamSpell*, it judges a input token whether a word by searching it in the language model. However, the corpus used
-training the language model is always dirty, so it may "trust" wrong words and give their candidates a larger penalty.
+Like **JamSpell**, **SpellCor** also gives words' candidates a different penalty according to original input is a real word 
+or not. In **JamSpell**, it judges a input token whether a word by searching it in the language model. However, the corpus used
+training the language model is always dirty, *so it may "trust" wrong words and give their candidates a larger penalty.*
 By defining your own clean dictionary, this problem can be solved.
 ```python
 # load a clean dictionary
@@ -157,7 +157,7 @@ checker.use_valid_candidate_dict = True
 
 ### TO-Do
 
-1. Add *symmetrical deletion algorithm*.
+1. Add **symmetrical deletion algorithm**.
 2. Add NN language Model.
 
 ### License
