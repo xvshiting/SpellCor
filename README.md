@@ -20,14 +20,25 @@ can be improved if you use NN language model.
 
 ***
 
+### Requires
+
+> python 3.x
+
 ### Basic Usage
+
+#### Installation
+
+```shell
+pip install spellcor
+```
 
 
 #### load language model
 
+You can download basic language model [here](https://pan.baidu.com/s/1r3DxT0AKmuUcu2JERObiaw).
+
 ```python
 import spellcor
-
 
 checker = spellcor.SpellChecker()
 
