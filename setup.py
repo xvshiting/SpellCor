@@ -23,7 +23,7 @@ class CustomInstall(install):
         self.run_command('build_ext')
         install.run(self)
 
-VERSION = '0.0.11'
+VERSION = '0.0.12'
 
 setup(
     name='spellcor',
@@ -36,7 +36,7 @@ setup(
     long_description='context-based spell checker',
     keywords=['nlp', 'spell', 'spell-checker', 'spellcor'],
     classifiers=[
-        'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3',
         'License :: OSI Approved :: MIT License',
     ],
     packages=['models'],
