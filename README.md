@@ -1,9 +1,10 @@
 # SpellCor
 
-**SpellCor** is a spell correction tools coded fully with PYTHON.
+**SpellCor** is a spell correction tool coded fully with PYTHON.
 
-We implement this program inspired by [*JamSpell*](https://github.com/bakwc/JamSpell) which writen in C++ and could used with python by swig. 
-**Jamspell** is effective due to **C++** benefits. However, it's not convenient for developers or anyone who 
+We implement this program inspired by [*JamSpell*](https://github.com/bakwc/JamSpell) which writen in C++ and could be 
+used with python by swig. 
+**Jamspell** is efficient due to its **C++** benefits. However, it's not convenient for developers or anyone who 
 wants to add some features to it. Considering the prevalence of python in NLP area, We implement a python
 version spell correction program works like **Jamspell**, we call it **SpellCor**.
 
