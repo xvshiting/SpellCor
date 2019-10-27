@@ -150,6 +150,12 @@ checker.use_valid_candidate_dict = True
 
 ```
 
+### Train your own n-gram language Model
+
+```shell
+python -m spellcor data.txt output_model_dir
+```
+
 ### TO-Do
 
 1. Add **symmetrical deletion algorithm**.
