@@ -7,7 +7,7 @@ We implement this program inspired by [*JamSpell*](https://github.com/bakwc/JamS
 wants to add some features to it. Considering the prevalence of python in NLP area, We implement a python
 version spell correction program works like **Jamspell**, we call it **SpellCor**.
 
-Compare with **Jamspell**, **SpellCor** is more flexible for Python developer:
+Compared with **Jamspell**, **SpellCor** is more flexible for Python developer:
 * Fully python code, include a python version *n-gram* language model .
 * You can easily use your own language model like NN models by writing some pieces of code.
 * Support to filter candidate words by the dictionary pointed by yourself.
