@@ -106,7 +106,7 @@ These four methods above **must** be implemented in your new class.
 * Check model list and use
 
 ```python
-# Do not forget import your new .py
+# Do not forget to import your new .py
 
 checker = spellcor.SpellChecker()
 
