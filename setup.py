@@ -23,7 +23,7 @@ class CustomInstall(install):
         self.run_command('build_ext')
         install.run(self)
 
-VERSION = '0.0.16'
+VERSION = '0.0.17'
 
 setup(
     name='spellcor',

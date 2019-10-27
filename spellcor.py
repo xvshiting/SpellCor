@@ -1,6 +1,11 @@
 from spellcor_models import registered_language_models
-import spellcor_utils
+from spellcor_models import register_lang_model
+from spellcor_models.languageModel import AbstractLanguageModel
 
+register_lang_model = register_lang_model
+AbstractLanguageModel = AbstractLanguageModel
+
+import spellcor_utils
 
 class SpellChecker:
     def __init__(self):

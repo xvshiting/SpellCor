@@ -75,43 +75,38 @@ checker.fix_pos(["here","are", "some", "Questino"], 3)
 
 #### Add language model
 
-* **Clone** this repo
-
-```shell
-git clone https://github.com/xvshiting/SpellCor.git
-```
-
 * **Add** your own model
  
- ```shell 
- cd SpellCor/spellcor_models
-```
-  Under models dir, creat a py file and Add a new class based on `AbstractLanguageModel` like this:
+ creat a py file and Add a new class based on `AbstractLanguageModel` like this:
 ```python
-@register_lang_model("NewModel")
-class BaseLanguageModel(AbstractLanguageModel):
-    def __init__(self, model_path,**kwargs):
-        super(BaseLanguageModel, self).__init__("NewModel")
+import spellcor
+
+@spellcor.register_lang_model("NewModel")
+class MyModel(spellcor.AbstractLanguageModel):
+    def __init__(self, model_path, **kwargs):
+        super(MyModel, self).__init__("NewModel")
+        self.language_model = None
+        self.load_lang_model(model_path)
+
     def get_score(self, sentence, word_start_index, word_end_index):
-        # call your NN language model to compute score of sentence
         pass
+
     def is_word(self, word):
-        pass
+        return self.language_model.is_word(word)
+
     def load_lang_model(self, model_path):
         pass
+
     def word_freq(self, word):
         pass
 ```
 These four methods above **must** be implemented in your new class.
 
-* Install with your model
-```python
-python setup.py install
-```
 * Check model list and use
 
 ```python
-import spellcor
+# Do not forget import your new .py
+
 checker = spellcor.SpellChecker()
 
 checker.show_show_lang_models()
