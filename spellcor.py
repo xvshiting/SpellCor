@@ -19,6 +19,7 @@ class SpellChecker:
         self._unknown_penalty = 4.0
         self.alphas = "qwertyuiopasdfghjklzxcvbnm"
         self.MaxCandidatesToCheck = 14
+        self.batch_score = False
 
     @property
     def known_penalty(self): return self._known_penalty
@@ -139,12 +140,22 @@ class SpellChecker:
     def __sort_candidate(self,candidates, tokens, pos, penalty_func):
         """sort candidates based on language model score"""
         candidates_score_pair = []
+        candidates_sentence = []
         for c in candidates:
             cand_tokens = tokens[:]
             cand_tokens[pos] = c
-            score = self.language_model.get_score(cand_tokens, pos, pos+1)
-            score = penalty_func(c, score)
-            candidates_score_pair.append([c, score])
+            candidates_sentence.append([c, cand_tokens[:]])
+        if not self.batch_score:
+            for c, cand_tokens in candidates_sentence:
+                score = self.language_model.get_score(cand_tokens, pos, pos+1)
+                score = penalty_func(c, score)
+                candidates_score_pair.append([c, score])
+        else:
+            sentences = [ x[1] for x in candidates_sentence]
+            scores = self.language_model.get_batch_score(sentences, pos, pos+1)
+            for c, score in zip(candidates, scores):
+                score = penalty_func(c, score)
+                candidates_score_pair.append([c, score])
         candidates_score_pair = sorted(candidates_score_pair, key=lambda x: x[1], reverse=True)
         candidates = [c for c, s in candidates_score_pair]
         return candidates

@@ -117,7 +117,7 @@ def edit_distance_1(alphas, word, is_word, last_level=True):
     for i in range(len(word)+1):
         # insert
         for alpha in alphas:
-            candidate = word[:i]+alpha+word[i+1:]
+            candidate = word[:i]+alpha+word[i:]
             if is_word(candidate): candidates.append(candidate)
             if not last_level: candidates.extend(edit_distance_1(alphas, candidate, True))
         # delete
@@ -141,5 +141,5 @@ def edit_distance_1(alphas, word, is_word, last_level=True):
 
 if __name__ == "__main__":
     print(token_string("Hello Word k'w Waht be the one"))
-    print(edit_distance_2("evaluetde"))
+    print("school" in edit_distance_1("zxcvnmasdfghjklqwertyuiop","schol",lambda x: True))
 
